@@ -25,7 +25,9 @@
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.6",
-    "tailwindcss": "^1.8.10"
+    "tailwindcss": "^1.8.10",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
