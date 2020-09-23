@@ -1,3 +1,4 @@
+// Require Dependencies 
 const express = require('express');
 const router = express.Router();
 const connectDB = require('./db/connection');
@@ -7,7 +8,11 @@ const path = require('path');
 const passport = require('passport');
 const users = require('./routes/api/users');
 
+// Initialize Express for app
 const app = express();
+
+// Bodyparser Middleware
+app.use(bodyParser.json());
 
 connectDB();
 
