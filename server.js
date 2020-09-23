@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const passport = require('passport');
 const users = require('./routes/api/users');
+const tweets = require('./routes/api/tweets');
 
 // Initialize Express for app
 const app = express();
@@ -18,7 +19,8 @@ connectDB();
 
 const PORT = process.env.Port || 5000;
 app.listen(PORT, () => console.log("Connected to server on " + PORT));
-//Bodyparser Middleware
+
+// Bodyparser Middleware
 app.use(
    bodyParser.urlencoded({
       extended: false
@@ -27,11 +29,14 @@ app.use(
 app.use(bodyParser.json());
 
 
-//Passport Middleware
+// Passport Middleware
 app.use(passport.initialize());
 
-//Passport config
+// Passport config
 require('./config/passport')(passport);
 
-//Routes
+// Use Routes
+   // Any request that goes to api/users/ refer to the routes/api/users folder
 app.use('/api/users', users);
+   // Any request that goes to api/tweets/ refer to the routes/api/tweets folder
+app.use('/api/tweets', tweets);

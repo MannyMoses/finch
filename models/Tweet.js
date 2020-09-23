@@ -23,7 +23,7 @@ const tweetSchema = new Schema(
             type: String,
             required: true
         },
-        tweet: {
+        tweet_text: {
             type: String,
             required: true
         },
