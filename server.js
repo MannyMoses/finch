@@ -11,7 +11,7 @@ const app = express();
 
 connectDB();
 
-const PORT = process.env.Port || 3000;
+const PORT = process.env.Port || 5000;
 app.listen(PORT, () => console.log("Connected to server on " + PORT));
 //Bodyparser Middleware
 app.use(
