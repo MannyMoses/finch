@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const passport = require('passport');
+const cors = require("cors");
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
 
@@ -17,8 +18,7 @@ app.use(bodyParser.json());
 
 connectDB();
 
-const PORT = process.env.Port || 5000;
-app.listen(PORT, () => console.log("Connected to server on " + PORT));
+
 
 // Bodyparser Middleware
 app.use(
@@ -27,6 +27,7 @@ app.use(
    })
 );
 app.use(bodyParser.json());
+app.use(cors())
 
 
 // Passport Middleware
@@ -40,3 +41,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
    // Any request that goes to api/tweets/ refer to the routes/api/tweets folder
 app.use('/api/tweets', tweets);
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("Connected to server on " + PORT));
