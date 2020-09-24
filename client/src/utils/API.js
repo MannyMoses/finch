@@ -40,7 +40,7 @@ class API extends Component {
                 <h1>{el.tweet_count}</h1>
             </div>
     )
-        return(
+        return (
         <div>
             {mappedTweets}
         </div>
