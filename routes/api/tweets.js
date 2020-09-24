@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
     // POST Route
-    // NEED TO TEST WITH POSTMAN
+    // Tested With POSTMAN
 router.post('/', (req, res) => {
     const newTweet = new Tweet({
         // Follow the Schema

@@ -18,17 +18,15 @@ app.use(bodyParser.json());
 
 connectDB();
 
-
-
 // Bodyparser Middleware
 app.use(
    bodyParser.urlencoded({
       extended: false
    })
 );
+
 app.use(bodyParser.json());
 app.use(cors())
-
 
 // Passport Middleware
 app.use(passport.initialize());
@@ -43,5 +41,8 @@ app.use('/api/users', users);
 app.use('/api/tweets', tweets);
 
 
+// Define the PORT (Server)
 const PORT = process.env.PORT || 5000;
+
+// Make sure app is listening
 app.listen(PORT, () => console.log("Connected to server on " + PORT));
