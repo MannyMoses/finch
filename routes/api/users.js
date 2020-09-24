@@ -9,7 +9,7 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 //Load user model
-const User = require('../../models/Users');
+const User = require('../../models/User');
 
 
 router.post('/register', (req,res) => {
