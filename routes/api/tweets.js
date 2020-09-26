@@ -9,14 +9,15 @@ const Tweet = require('../../models/Tweet');
     // GET Route
     // Tested with POSTMAN
 router.get('/', (req, res) => {
+    console.log('ROUTE HAS BEEN HIT')
     // Fetch all items from the DB
     Tweet.find().sort({date: -1})
     .then(tweets => res.json(tweets))
 });
 
     // POST Route
-    // NEED TO TEST WITH POSTMAN
-router.put('/', (req, res) => {
+    // Tested With POSTMAN
+router.post('/', (req, res) => {
     const newTweet = new Tweet({
         // Follow the Schema
         name: req.body.name,
