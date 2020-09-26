@@ -1,13 +1,26 @@
-import React from 'react';
-import './App.css';
-import API from '../src/utils/API';
+import React, { Component } from 'react';
+import { BrowswerRouter as Router, route} from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Register from './pages/Register/register';
+import Login from './pages/Login/login';
+
+import store from './store';
+
+import API from '../src/utils/API';
+
 
 function App() {
   return (
     <div className="App">
-      <API />
-      <Register/>
+      <Provider store={store}>
+        <Router>
+          <Route exact path="/" component = {Login}/>
+          <Route exact path="/register" component = {Register}/>
+          <Route exact path="/dashboard" component = {API}/>
+        </Router>
+      </Provider>
+
+
     </div>
   );
 }
