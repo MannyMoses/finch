@@ -7,8 +7,10 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
     "client": "cd client && npm start",
+    "client-install": "npm install --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwind build client/src/index.css -o client/public/index.css"
+    "build:css": "tailwind build client/src/index.css -o client/public/index.css",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
