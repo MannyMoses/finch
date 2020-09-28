@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowswerRouter as Router, route} from 'react-router-dom';
+import { BrowswerRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Register from './pages/Register/register';
 import Login from './pages/Login/login';
@@ -13,14 +13,12 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
+        <Switch>
           <Route exact path="/" component = {Login}/>
           <Route exact path="/register" component = {Register}/>
           <Route exact path="/dashboard" component = {API}/>
-        </Router>
+        </Switch>
       </Provider>
-
-
     </div>
   );
 }
