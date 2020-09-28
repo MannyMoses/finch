@@ -1,3 +1,7 @@
 node_modules
 
 .env
+
+src/tailwind.output.css
+
+src/main.output.css
