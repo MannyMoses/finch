@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom'; 
 import React, { Component } from 'react';
 import { registerUser } from '../../actions/authActions';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-
-import { Link } from "react-router-dom";
 import './register.css';
 
 class Register extends Component {
@@ -18,6 +17,13 @@ class Register extends Component {
             password2: "",
             errors: {}
         };
+    }
+
+    componentDidMount() {
+        //If logged in, redirect to dashboard
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
+        }
     }
 
     componentWillRecieveProps(nextProps) {
@@ -58,9 +64,12 @@ class Register extends Component {
                 value={this.state.name}
                 error={errors.name}
                 id="name"
-                type="text"/>
+                type="text"
+                className={classnames("", {
+                    invalid: errors.name})}/>
               
             <label htmlFor="email">Email</label>
+            <span className="red-text">{errors.name}</span>
             <input 
                 onChange={this.onChange}
                 value={this.state.email}
@@ -91,7 +100,7 @@ class Register extends Component {
     }
 }
 
-Register.prototype = {
+Register.propType = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
@@ -101,6 +110,7 @@ const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
 })
+    
 
 export default connect(
     mapStateToProps,

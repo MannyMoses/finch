@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import  { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,6 +14,12 @@ class Login extends Component {
             password: "",
             errors: {}
         };
+    }
+
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,7 +42,7 @@ class Login extends Component {
         e.preventDefault();
 
 
-    const userData = {
+        const userData = {
         email: this.state.email,
         passwored: this.state.password
     };
@@ -66,25 +72,44 @@ class Login extends Component {
                     onChange={this.onChange}
                     value={this.state.password}
                     id="password"
-                    value="password"/>
+                    value="password"
+                    className={classnames("", {
+                        invalid: errors.password || errors.passwordincorrect})}/>
                 <button type="submit">Login</button>
             </form>
         )
     }
 }
 
+
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-};
-
-const mapStateTopProps = state => ({
+  };
+  
+  const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
-});
-
-export default connect(
-    mapStateTopProps,
+  });
+  
+  export default connect(
+    mapStateToProps,
     { loginUser }
-(Login));
+  )(Login);
+
+// Login.propTypes = {
+//     loginUser: PropTypes.func.isRequired,
+//     auth: PropTypes.object.isRequired,
+//     errors: PropTypes.object.isRequired
+// };
+
+// const mapStateTopProps = state => ({
+//     auth: state.auth,
+//     errors: state.errors
+// });
+
+// export default connect(
+//     mapStateTopProps,
+//     { loginUser }
+// (Login));
