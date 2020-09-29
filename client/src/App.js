@@ -4,8 +4,8 @@ import API from '../src/utils/API';
 
 function App() {
   return (
-    <div className="App">
-      <API />
+    <div>
+      <h1 class="text-6xl"></h1>
     </div>
   );
 }
