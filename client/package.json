@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5001",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -21,7 +22,7 @@
   "scripts": {
     "build:tailwind": "tailwind build src/assets/tailwind.css -o src/assets/main.output.css",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/assets/main.output.css -c 'npm run build:tailwind'",
-    "start": "npm-run build:tailwind --parallel watch:tailwind start:react",
+    "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
     "start:react": "react-scripts start",
     "prebuild": "run-s build:tailwind",
     "build": "react-scripts build",
