@@ -20,7 +20,7 @@ function App() {
   );
 
 
-//Check for token to keep user logged in
+// Check for token to keep user logged in
 if (localStorage.jwtToken) {
   //Set auth token header auth
   const token = localStorage.jwtToken;
@@ -58,4 +58,5 @@ class App extends Component {
 }
 
 
-export default App;
+export default App
+  }
