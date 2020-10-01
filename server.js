@@ -13,19 +13,15 @@ const tweets = require('./routes/api/tweets');
 // Initialize Express for app
 const app = express();
 
-// Bodyparser Middleware
-app.use(bodyParser.json());
-
 connectDB();
 
 // Bodyparser Middleware
 app.use(
    bodyParser.urlencoded({
-      extended: false
+      extended: true
    })
 );
 
-app.use(bodyParser.json());
 app.use(cors())
 
 // Passport Middleware
