@@ -9,6 +9,7 @@ const passport = require('passport');
 const cors = require("cors");
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
+const axios = require('axios');
 
 // Initialize Express for app
 const app = express();
@@ -35,6 +36,22 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
    // Any request that goes to api/tweets/ refer to the routes/api/tweets folder
 app.use('/api/tweets', tweets);
+
+// When api/gettweets/ is requested, call Twitter API and send to the client
+app.get('/api/gettweets', function(req, res) {
+   axios.get('https://api.twitter.com/2/tweets/search/recent?query=tax&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=20', {
+               headers: {
+                   'Authorization': `Bearer AAAAAAAAAAAAAAAAAAAAAIUgGQEAAAAAUqgsDq853ETcqw1VSR%2BKktyvugA%3DU5rjpWyYLCrAeu3eXYSK2n4mLSFIQSrLd7gQYqdOspmvW3uFmD`
+               }
+           })
+           .then(response => {
+     
+               res.send(response.data)
+           })
+           .catch((error) => {
+               console.error(error)
+           })
+  });
 
 
 // Define the PORT (Server)

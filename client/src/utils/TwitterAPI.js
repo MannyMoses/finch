@@ -11,11 +11,27 @@ class TwitterAPI extends Component {
     }
 
     // Twitter API Axios Call
+    componentDidMount() {
+        // Send get request to the server
+        axios.get('/api/gettweets').then(res => {
+                console.log(res)
+                // Set Initial State
+            this.setState({
+                tweets: res.data.data
+            })
+        })
+    }
 
     render() {
+        // Map through Tweet and User Object to render Twitter metrics to the front-end
         return (
             <div className="twitterAPI">
-
+                    {this.state.tweets.map(el => {
+                        return (
+                        <div>${el.text}</div>
+                        )
+                    })
+                    }
             </div>
         )
     }
