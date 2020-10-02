@@ -1,10 +1,13 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";
-import "../components/Background.js";
+
+import React, { Component } from 'react';
+import  { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import classnames from 'classnames';
+import './login.css';
+import TwitterAPI from '../../utils/TwitterAPI';
+
 
 class Login extends Component {
   constructor() {
@@ -52,8 +55,14 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
 
-    return <Background click={this.closesideBarClickHandler} />;
-  }
+
+        return(
+            <div className="login">
+                <TwitterAPI />
+            </div>
+        )
+    }
+
 }
 
 Login.propTypes = {
