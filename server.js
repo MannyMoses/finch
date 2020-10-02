@@ -41,7 +41,7 @@ app.use('/api/tweets', tweets);
 app.get('/api/gettweets', function(req, res) {
    axios.get('https://api.twitter.com/2/tweets/search/recent?query=tax&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=20', {
                headers: {
-                   'Authorization': `Bearer AAAAAAAAAAAAAAAAAAAAAIUgGQEAAAAAUqgsDq853ETcqw1VSR%2BKktyvugA%3DU5rjpWyYLCrAeu3eXYSK2n4mLSFIQSrLd7gQYqdOspmvW3uFmD`
+                   'Authorization': `Bearer process.env.TWITTER_API_KEY`
                }
            })
            .then(response => {
