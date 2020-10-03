@@ -1,26 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authActions';
-
-import { Provider } from 'react-redux';
-import Register from './pages/Register/register';
-import Login from './pages/Login/login';
-import Dashboard from './pages/Dashboard/dashboard';
-import store from './store';
-import PrivateRoute from './components/private-route/PrivateRoute';
-import API from '../src/utils/API';
-
-function App() {
-  return (
-    <div>
-      <h1 class="text-6xl"></h1>
-    </div>
-  );
-
-=======
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -32,7 +11,6 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import store from "./store";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import API from "../src/utils/API";
->>>>>>> 01ba36a1345b219df6528dae7d69d7034e68410c
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -71,10 +49,4 @@ class App extends Component {
   }
 }
 
-<<<<<<< HEAD
-
-export default App
-  }
-=======
 export default App;
->>>>>>> 01ba36a1345b219df6528dae7d69d7034e68410c
