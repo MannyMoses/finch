@@ -25,7 +25,7 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard"); //push to dashboard when login
+      this.props.push("/dashboard"); //push to dashboard when login
     }
 
     if (nextProps.errors) {
@@ -57,6 +57,7 @@ class Login extends Component {
         return(
             <div className="login">
             </div>
+
         )
     }
 
@@ -75,18 +76,3 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { loginUser })(Login);
 
-// Login.propTypes = {
-//     loginUser: PropTypes.func.isRequired,
-//     auth: PropTypes.object.isRequired,
-//     errors: PropTypes.object.isRequired
-// };
-
-// const mapStateTopProps = state => ({
-//     auth: state.auth,
-//     errors: state.errors
-// });
-
-// export default connect(
-//     mapStateTopProps,
-//     { loginUser }
-// (Login));
