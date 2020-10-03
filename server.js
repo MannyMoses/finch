@@ -10,6 +10,7 @@ const cors = require("cors");
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
 const axios = require('axios');
+require('dotenv').config();
 
 // Initialize Express for app
 const app = express();
@@ -38,20 +39,21 @@ app.use('/api/users', users);
 app.use('/api/tweets', tweets);
 
 // When api/gettweets/ is requested, call Twitter API and send to the client
-app.get('/api/gettweets', function(req, res) {
-   axios.get('https://api.twitter.com/2/tweets/search/recent?query=tax&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=20', {
-               headers: {
-                   'Authorization': `Bearer TWITTER_API_KEY`
-               }
-           })
-           .then(response => {
-     
-               res.send(response.data)
-           })
-           .catch((error) => {
-               console.error(error)
-           })
-  });
+// const key = process.env.KEY;
+// app.get('/api/gettweets', function(req, res) {
+//    axios.get('https://api.twitter.com/2/tweets/search/recent?query=tax&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=20', {
+//                headers: {
+//                    'Authorization': `Bearer ${key}`
+//                }
+//            })
+//            .then(response => {
+//      
+//                res.send(response.data)
+//            })
+//            .catch((error) => {
+//                console.error(error)
+//            })
+//   });
 
 
 // Define the PORT (Server)
