@@ -10,7 +10,6 @@ import Login from "./pages/Login/login";
 import Dashboard from "./pages/Dashboard/dashboard";
 import store from "./store";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import API from "../src/utils/API";
 
 //Check for token to keep user logged in
 if (localStorage.jwtToken) {
