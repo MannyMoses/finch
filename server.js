@@ -57,7 +57,7 @@ app.use('/api/tweets', tweets);
 
 
 // Define the PORT (Server)
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 // Make sure app is listening
 app.listen(PORT, () => console.log("Connected to server on " + PORT));
