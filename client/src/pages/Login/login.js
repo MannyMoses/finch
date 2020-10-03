@@ -5,98 +5,77 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import classnames from 'classnames';
 import './login.css';
+import TwitterAPI from '../../utils/TwitterAPI';
+
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-            errors: {}
-        };
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      errors: {},
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); //push to dashboard when login
     }
 
-    componentDidMount() {
-        if (this.props.auth.isAuthenticated) {
-            this.props.history.push('/dashboard');
-        }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
     }
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/dashboard"); //push to dashboard when login
-        }
+  onChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
 
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
+  onSubmit = (e) => {
+    e.preventDefault();
 
-    onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+    const userData = {
+      email: this.state.email,
+      passwored: this.state.password,
     };
 
-    onSubmit = e => {
-        e.preventDefault();
+    this.props.loginUser(userData);
+  };
 
+  render() {
+    const { errors } = this.state;
 
-        const userData = {
-        email: this.state.email,
-        passwored: this.state.password
-    };
-
-    this.props.loginUser(userData); 
-    };
-
-    render() {
-        const { errors } = this.state;
 
         return(
-            <form noValidate onSubmit={this.onSubmit}>
-                <label htmlFor="email">Email:</label>
-                <span className="red-text">{errors.email}{errors.emailnotfound}</span>
-                <input 
-                    onChange={this.onChange}
-                    value={this.state.email}
-                    errors={errors.email}
-                    id="email"
-                    value="email"
-                    className={classnames("", {
-                        invalid: errors.email || errors.emailnotfound})}/>
-                
-                <label htmlFor="password">Password:</label>
-                <span className="red-text">{errors.password}{errors.passwordincorrect}</span>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.password}
-                    id="password"
-                    value="password"
-                    className={classnames("", {
-                        invalid: errors.password || errors.passwordincorrect})}/>
-                <button type="submit">Login</button>
-            </form>
+            <div className="login">
+                <TwitterAPI />
+            </div>
         )
     }
+
 }
 
-
 Login.propTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
-  };
-  
-  const mapStateToProps = state => ({
-    auth: state.auth,
-    errors: state.errors
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { loginUser }
-  )(Login);
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);
 
 // Login.propTypes = {
 //     loginUser: PropTypes.func.isRequired,
