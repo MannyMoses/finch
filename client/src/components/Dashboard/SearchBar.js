@@ -1,13 +1,17 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
+
+    constructor(props){
+        super(props)
+    }
+
     render() {
         return (
             <div className="searchBar">
-                <form> {
-                    // pass in API Call & handleSearch Methods as props
-                }
-                    <input className="input" type="text" />
+                <form onSubmit={this.props.handleSubmit} action="">
+                    <input className="input" onChange={this.props.handleChange} type="text" />
                     <button className="searchBtn" type="submit">Search</button>
                 </form>
             </div>
@@ -16,3 +20,4 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
+

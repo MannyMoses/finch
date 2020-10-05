@@ -39,25 +39,27 @@ app.use('/api/users', users);
 app.use('/api/tweets', tweets);
 
 // When api/gettweets/ is requested, call Twitter API and send to the client
-// const key = process.env.KEY;
-// app.get('/api/gettweets', function(req, res) {
-//    axios.get('https://api.twitter.com/2/tweets/search/recent?query=tax&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=20', {
-//                headers: {
-//                    'Authorization': `Bearer ${key}`
-//                }
-//            })
-//            .then(response => {
-//      
-//                res.send(response.data)
-//            })
-//            .catch((error) => {
-//                console.error(error)
-//            })
-//   });
+ const key = process.env.KEY;
+ app.get('/api/gettweets', function(req, res) {
+   const {searchVal} = req.query
+
+    axios.get(`https://api.twitter.com/2/tweets/search/recent?query=${searchVal}&tweet.fields=created_at,public_metrics&user.fields=profile_image_url,public_metrics,verified&expansions=author_id&max_results=10`, {
+                headers: {
+                    'Authorization': `Bearer ${key}`
+                }
+            })
+            .then(response => {
+      
+                res.send(response.data)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+ });
 
 
 // Define the PORT (Server)
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Make sure app is listening
 app.listen(PORT, () => console.log("Connected to server on " + PORT));
