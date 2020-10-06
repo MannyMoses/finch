@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import classnames from 'classnames';
 import './login.css';
+import TwitterAPI from '../../utils/TwitterAPI';
 
 
 class Login extends Component {
@@ -56,6 +57,7 @@ class Login extends Component {
 
         return(
             <div className="login">
+              <TwitterAPI />
             </div>
 
         )
