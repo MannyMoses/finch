@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
     // POST Route
     // Tested With POSTMAN
-router.post('/saved', (req, res) => {
+router.post('/api/saved', (req, res) => {
     const newTweet = new Tweet({
         // Follow the Schema
         pic: req.body.pic,

@@ -74,7 +74,7 @@ class Card extends Component {
                     <p className="replies">{this.props.replies} Replies</p>
                 </div>
                 
-                  <SaveButton handldeClick={this.props.handleClick} />
+                  <SaveButton handleClick={this.handleClick} />
                 
             </div>
         )
