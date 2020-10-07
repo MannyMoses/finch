@@ -1,8 +1,7 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import { Typography, Container, Box } from "@material-ui/core/Typography";
+import { TextField } from "@material-ui/core";
 
 export default function SimpleContainer() {
   return (
@@ -18,11 +17,24 @@ export default function SimpleContainer() {
           >
             Finch
           </Typography>
-          <Button variant="outlined" color="darkgray">
-            Login
-          </Button>
-          <Button variant="outlined" color="darkgray">
+          <Button size="large" variant="outlined" color="darkgray">
             Register
+          </Button>
+
+          <form className={classes.root} noValidate autoComplete="off">
+            <TextField
+              id="outlined-basic"
+              label="Email address"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+            />
+          </form>
+          <Button size="large" variant="outlined" color="darkgray">
+            Login
           </Button>
         </Box>
       </Container>
