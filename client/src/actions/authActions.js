@@ -11,9 +11,19 @@ import {
 
 
 //Register User
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = ({ name, email, password, password2 , history}) => dispatch => {
+    //Header
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    // Request Body
+    const body = JSON.stringify({name,email,password,password2});
+
     axios
-        .post("/api/users/register", userData)
+        .post("/api/users/register", body, config)
         .then( res => history.push('/')) //re-direct to login on successful register
         .catch( err => 
             dispatch({
@@ -26,8 +36,13 @@ export const registerUser = (userData, history) => dispatch => {
 //Login - get user token
 
 export const loginUser = userData => dispatch => {
+    const config = {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded" 
+        }
+    }
     axios
-        .post('/api/users/', userData)
+        .post('http://localhost:8001/api/users/login', userData, config)
         .then(res => {
             //save to loacl storage
 
