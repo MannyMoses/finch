@@ -37,17 +37,17 @@ class Card extends Component {
         return (
             <div className="card">
                 <div className="tweet">
-                    <h4 className="name">{this.props.name}</h4>
-                    <h4 className="userName">@{this.props.username}</h4>
-                    <img src={this.props.pic} alt=""></img>
-                    <p className="following">{this.props.following}</p>
-                    <p className="followers">{this.props.followers}</p>
-                    <p className="userTweet">{this.props.userTweet}</p>
+                    <img className="pic" src={this.props.pic} alt=""></img>
+                    <h2 className="name">{this.props.name}</h2>
+                    <h6 className="userName">@{this.props.username}</h6>
+                    <p className="following">{this.props.following} Following</p>
+                    <p className="followers">{this.props.followers} Followers</p>
+                    <p className="userTweet">{this.props.userTweet} Tweets</p>
                     <p className="tweet">{this.props.tweet}</p>
                     <p className="date">{this.props.date}</p>
-                    <p className="likes">Likes: {this.props.likes}</p>
-                    <p className="retweets">Retweets: {this.props.retweets}</p>
-                    <p className="replies">Replies: {this.props.replies}</p>
+                    <p className="likes">{this.props.likes} Likes</p>
+                    <p className="retweets">{this.props.retweets} Retweets</p>
+                    <p className="replies">{this.props.replies} Replies</p>
                 </div>
                 {
                     // Save Button will render with each tweet
