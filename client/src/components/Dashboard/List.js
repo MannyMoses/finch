@@ -26,8 +26,8 @@ class List extends Component {
                     // let newArr = this.props.tweets[j]
                     newArr.push(newObj);
                  
-                console.log(newObj);
-                console.log(typeof tweets);
+                // console.log(newObj);
+                // console.log(typeof tweets);
                  
                 }
              }
@@ -41,6 +41,7 @@ class List extends Component {
                           
                          <div className="tweetCard">
                              <Card
+                                
                                  name={el.name}
                                  username={el.username}
                                  pic={el.profile_image_url}
@@ -58,24 +59,9 @@ class List extends Component {
                     
                  })}
                  
-                {
-                //{this.props.users.map(le => {
-                //    return (
-                //        <div className="userCard">
-                //            <Card
-                //                name={le.name}
-                //                username={le.username}
-                //                pic={le.profile_image_url}
-                //                following={le.public_metrics.following_count}
-                //                followers={le.public_metrics.followers_count}
-                //                userTweet={le.public_metrics.tweet_count}
-                //            />
-                //        </div>
-                //    )
-                //})}
-                }
+                
             </div>
-        )
+        );
     }
 };
 
