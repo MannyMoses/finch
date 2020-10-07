@@ -7,27 +7,42 @@ const Schema = mongoose.Schema;
 // Tweets Schema
 const tweetSchema = new Schema(
     {
+        pic: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true
         },
-        screen_name: {
+        username: {
             type: String,
             required: true
         },
-        date: {
-            type: Date,
+        following_count: {
+            type: Number,
+            trim: true,
             required: true
         },
-        profile_pic: {
-            type: String,
+        followers_count: {
+            type: Number,
+            trim: true,
+            required: true
+        },
+        tweet_count: {
+            type: Number,
+            trim: true,
             required: true
         },
         tweet_text: {
             type: String,
             required: true
         },
-        reply_count: {
+        Date: {
+            type: Date,
+            required: true
+        },
+        likes_count: {
             type: Number,
             trim: true,
             required: true
@@ -37,22 +52,7 @@ const tweetSchema = new Schema(
             trim: true,
             required: true
         },
-        favorite_count: {
-            type: Number,
-            trim: true,
-            required: true
-        },
-        follower_count: {
-            type: Number,
-            trim: true,
-            required: true
-        },
-        following_count: {
-            type: Number,
-            trim: true,
-            required: true
-        },
-        tweet_count: {
+        reply_count: {
             type: Number,
             trim: true,
             required: true

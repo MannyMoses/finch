@@ -17,20 +17,20 @@ router.get('/', (req, res) => {
 
     // POST Route
     // Tested With POSTMAN
-router.post('/', (req, res) => {
+router.post('/saved', (req, res) => {
     const newTweet = new Tweet({
         // Follow the Schema
+        pic: req.body.pic,
         name: req.body.name,
-        screen_name: req.body.screen_name,
-        date: req.body.date,
-        profile_pic: req.body.profile_pic,
-        tweet_text: req.body.tweet_text,
-        reply_count: req.body.reply_count,
-        retweet_count: req.body.retweet_count,
-        favorite_count: req.body.favorite_count,
-        follower_count: req.body.follower_count,
+        username: req.body.username,
         following_count: req.body.following_count,
-        tweet_count: req.body.tweet_count
+        followers_count: req.body.followers_count,
+        tweet_count: req.body.tweet_count,
+        tweet_text: req.body.tweet_text,
+        date: req.body.date,
+        likes_count: req.body.likes_count,
+        retweet_count: req.body.retweet_count,
+        reply_count: req.body.reply_count
     });
     newTweet.save()
     .then(tweet => res.json(tweet));

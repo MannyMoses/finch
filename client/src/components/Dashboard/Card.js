@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import SaveButton from './SaveButton';
 
 class Card extends Component {
     // declare repsonses as a variable
@@ -32,7 +34,29 @@ class Card extends Component {
             followers, 
             userTweet 
         }
+
     }
+
+    handleClick = (event) => {
+        event.preventDefault();
+        const payload = {
+            tweets: this.state.props
+        };
+
+        axios({
+            url: '/api/saved',
+            method: 'POST',
+            data: payload
+        })
+        .then(() => {
+            console.log("Data sent to server!");
+        })
+        .catch(() => {
+            console.log('Server Error');
+        });
+    }
+
+
     render() {
         return (
             <div className="card">
@@ -49,9 +73,9 @@ class Card extends Component {
                     <p className="retweets">{this.props.retweets} Retweets</p>
                     <p className="replies">{this.props.replies} Replies</p>
                 </div>
-                {
-                    // Save Button will render with each tweet
-                }
+                
+                  <SaveButton handldeClick={this.props.handleClick} />
+                
             </div>
         )
     }
