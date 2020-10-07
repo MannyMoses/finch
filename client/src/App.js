@@ -5,10 +5,10 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 //import for react testing
-import HomepageImage from './components/HomepageImage';
-import { Header, Footer } from './components/Layouts'
+import HomepageImage from "./components/HomepageImage";
+import { Header, Footer } from "./components/Layouts";
 
-//imports for pages 
+//imports for pages
 import { Provider } from "react-redux";
 import Register from "./pages/Register/register";
 import Login from "./pages/Login/login";
@@ -58,9 +58,7 @@ class App extends Component {
 //     <div className="App">
 //       <header className="App-header">
 //         <HomepageImage />
-//         <p>
-//           My first React website!
-//         </p>
+//         <p>My first React website!</p>
 //         <a
 //           className="App-link"
 //           href="https://reactjs.org"
@@ -76,12 +74,14 @@ class App extends Component {
 
 class OrigLayout extends Component {
   render() {
-    return <Fragment>
-      <Header />
+    return (
+      <Fragment>
+        <Header />
 
-      <Footer />
+        <Footer />
       </Fragment>
+    );
   }
 }
 
-export { App, OrigLayout } ;
+export { App, OrigLayout };
