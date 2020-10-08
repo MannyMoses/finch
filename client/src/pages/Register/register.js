@@ -44,13 +44,13 @@ class Register extends Component {
     const newUser = {
         name: this.state.name,
         email: this.state.email,
-        passport: this.state.password,
+        password: this.state.password,
         password2: this.state.password2
     };
-        console.log(newUser);
+        console.log("newUser",newUser);
         this.props.registerUser(newUser, this.props.history);
     };   
-    
+     
 
     render() {
         const { errors } = this.state;

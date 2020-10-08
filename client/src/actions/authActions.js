@@ -1,6 +1,7 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
+import React from 'react';
 
 
 import {
@@ -11,7 +12,7 @@ import {
 
 
 //Register User
-export const registerUser = ({ name, email, password, password2 , history}) => dispatch => {
+export const registerUser = (newUser, history) => dispatch => {
     //Header
     const config = {
         headers: {
@@ -20,11 +21,15 @@ export const registerUser = ({ name, email, password, password2 , history}) => d
     }
 
     // Request Body
-    const body = JSON.stringify({name,email,password,password2});
-
+    const body = JSON.stringify(newUser);
+    console.log("body: ", body);
     axios
-        .post("/api/users/register", body, config)
-        .then( res => history.push('/')) //re-direct to login on successful register
+        .post("http://localhost:8000/api/users/register", body, config)
+        .then(res => {
+            console.log('res', res);
+            console.log('res.data', res.data);
+        })
+        // .then( res => history.push('/')) //re-direct to login on successful register
         .catch( err => 
             dispatch({
                 type: GET_ERRORS,
@@ -35,23 +40,27 @@ export const registerUser = ({ name, email, password, password2 , history}) => d
 
 //Login - get user token
 
-export const loginUser = userData => dispatch => {
-    const config = {
+export const loginUser =(newUser, history)  => dispatch => {
+     //Header
+     const config = {
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded" 
+            'Content-Type': 'application/json'
         }
     }
+
+    // Request Body
+    const body = JSON.stringify(newUser);
     axios
-        .post('http://localhost:8001/api/users/login', userData, config)
+        .post('http://localhost:8000/api/users/login', body, config)
         .then(res => {
-            //save to loacl storage
+            //save to local storage
 
         //Set token to localStorage
-
         const { token } = res.data;
+
         localStorage.setItem('jwtToken', token);
         //Set auth to header
-        setAuthToken(token);
+        setAuthToken(token);    
         //Decode token to get user data
         const decoded = jwt_decode(token);
         //Set current user
