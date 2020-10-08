@@ -44,13 +44,13 @@ class Register extends Component {
     const newUser = {
         name: this.state.name,
         email: this.state.email,
-        passport: this.state.password,
+        password: this.state.password,
         password2: this.state.password2
     };
-        console.log(newUser);
+        console.log("newUser",newUser);
         this.props.registerUser(newUser, this.props.history);
     };   
-    
+     
 
     render() {
         const { errors } = this.state;
@@ -59,40 +59,54 @@ class Register extends Component {
           <form noValidate onSubmit={this.onSubmit}>
         
             <label htmlFor="name">Name</label>
-            <input 
-                onChange={this.onChange}
-                value={this.state.name}
-                error={errors.name}
-                id="name"
-                type="text"
-                className={classnames("", {
-                    invalid: errors.name})}/>
+            <input
+                  onChange={this.onChange}
+                  value={this.state.name}
+                  error={errors.name}
+                  id="name"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.name
+                  })}
+                />
               
             <label htmlFor="email">Email</label>
             <span className="red-text">{errors.name}</span>
-            <input 
-                onChange={this.onChange}
-                value={this.state.email}
-                error={errors.mail}
-                id="email"
-                type="email"/>
+            <input
+                  onChange={this.onChange}
+                  value={this.state.email}
+                  error={errors.email}
+                  id="email"
+                  type="email"
+                  className={classnames("", {
+                    invalid: errors.email
+                  })}
+                />
 
             <label htmlFor="password">Password</label>
-            <input 
-                onChange={this.onChange}
-                value={this.state.password}
-                error={errors.password}
-                id="email"
-                type="password"/>
+            <input
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id="password"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password
+                  })}
+                />
 
 
             <label htmlFor="password2">Confirm Password</label>  
-            <input  
-                onChange={this.onChange}
-                value={this.state.password2}
-                error={errors.password}
-                id="password2"
-                type="password"/>
+            <input
+                  onChange={this.onChange}
+                  value={this.state.password2}
+                  error={errors.password2}
+                  id="password2"
+                  type="password"
+                  className={classnames("", {
+                    invalid: errors.password2
+                  })}
+                />
                 
             <button type="submit">Sign Up</button>
           </form>  
