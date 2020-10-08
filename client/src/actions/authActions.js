@@ -46,6 +46,7 @@ export const loginUser =(newUser, history)  => dispatch => {
 
     // Request Body
     const body = JSON.stringify(newUser);
+    console.log('body:', body);
     axios
         .post('http://localhost:8000/api/users/login', body, config)
         .then(res => {
