@@ -25,11 +25,7 @@ export const registerUser = (newUser, history) => dispatch => {
     console.log("body: ", body);
     axios
         .post("http://localhost:8000/api/users/register", body, config)
-        .then(res => {
-            console.log('res', res);
-            console.log('res.data', res.data);
-        })
-        // .then( res => history.push('/')) //re-direct to login on successful register
+        .then( res => history.push('/')) //re-direct to login on successful register
         .catch( err => 
             dispatch({
                 type: GET_ERRORS,
