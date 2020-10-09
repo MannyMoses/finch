@@ -46,6 +46,7 @@ class Card extends Component {
          data: this.props
      })
      .then(() => {
+         this.getTweets();
          console.log("Data sent to server!");
      })
      .catch(() => {
