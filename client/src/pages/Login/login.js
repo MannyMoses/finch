@@ -67,8 +67,8 @@ class Login extends Component {
     this.props.loginUser(userData);
   };
 
-  onClick = () => {
-    this.props.history.push('/dashboard');
+  register = () => {
+    this.props.history.push('/register');
   };
 
   render() {
@@ -150,6 +150,11 @@ class Login extends Component {
             Log in
           </Button>
           <div style={{ height: 20 }} />
+          <Grid item>
+                <Link onClick={this.register} variant="body">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+          </Grid>
         </div>
         <div />
       </Grid>
