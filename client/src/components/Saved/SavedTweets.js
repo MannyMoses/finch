@@ -18,7 +18,7 @@ class SavedTweets extends Component {
                 const data = response.data;
                 console.log("Data Received!");
                 this.setState({ posts: data })
-                console.log(data);
+                console.log(this.state.posts);
                 
             })
             .catch(() => {
@@ -26,33 +26,24 @@ class SavedTweets extends Component {
             })
         }
 
-        this.displayPosts = (posts) => {
-            if (!posts.length) return null;
-
-            posts.map((posts, index) => {
-                <div key={index}>
-                    <img className="pic">{posts.profile_image_url}</img>
-                    <h2 className="name">{posts.name}</h2>
-                    <p className="username">{posts.username}</p>
-                    <p className="following">{posts.public_metrics.following}</p>
-                    <p className="followers">{posts.public_metrics.followers}</p>
-                    <p className="userTweet">{posts.public_metrics.tweet_count}</p>
-                    <p className="tweet">{posts.text}</p>
-                    <p className="date">{posts.created_at}</p>
-                    <p className="likes">{posts.tweet_metrics.likes}</p>
-                    <p className="retweets">{posts.tweet_metrics.retweets}</p>
-                    <p className="replies">{posts.tweet_metrics.replies}</p>
+           {this.state.posts.map((data, index) => {
+                return <div key={index}>
+                    <img alt ="" className="pic">{data.pic}</img>
+                    <h2 className="name">{data.name}</h2>
+                    <p className="username">{data.username}</p>
+                    <p className="following">{data.following}</p>
+                    <p className="followers">{data.followers}</p>
+                    <p className="userTweet">{data.userTweet}</p>
+                    <p className="tweet">{data.tweet}</p>
+                    <p className="date">{data.date}</p>
+                    <p className="likes">{data.likes}</p>
+                    <p className="retweets">{data.retweets}</p>
+                    <p className="replies">{data.replies}</p>
                 </div>
-            });
+            })};
         }
     }
-    render() {
-        return (
-            <div className="savedTweets">
-                {this.displayPosts(this.state.posts)}
-            </div>
-        )
-    }
-}
+
+
 
 export default SavedTweets;
