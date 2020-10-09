@@ -41,7 +41,6 @@ class List extends Component {
                           
                          <div className="tweetCard">
                              <Card
-                                
                                  name={el.name}
                                  username={el.username}
                                  pic={el.profile_image_url}
