@@ -56,6 +56,13 @@ export default function SimpleContainer() {
             />
           </Grid>
           <TextField
+            onChange={this.onChange}
+            value={this.state.email}
+            errors={errors.email}
+            id="email"
+            type="email"
+            className={classnames("", {
+              invalid: errors.email || errors.emailnotfound})}
             label="Email Address"
             margin="normal"
             InputProps={{
@@ -67,6 +74,12 @@ export default function SimpleContainer() {
             }}
           />
           <TextField
+            onChange={this.onChange}
+            value={this.state.password}
+            id="password"
+            type="password"
+            className={classnames("", {
+              invalid: errors.password || errors.passwordincorrect })}
             label="Password"
             margin="normal"
             InputProps={{
