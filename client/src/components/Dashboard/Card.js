@@ -40,21 +40,21 @@ class Card extends Component {
     handleClick = (event) => {
         event.preventDefault();
         const payload = {
-            tweets: this.state.props
+            tweets: this.props
         };
         console.log(payload);
 
-       // axios({
-       //     url: '/api/tweets/saved',
-       //     method: 'POST',
-       //     data: payload
-       // })
-       // .then(() => {
-       //     console.log("Data sent to server!");
-       // })
-       // .catch(() => {
-       //     console.log('Server Error');
-       // });
+     axios({
+         url: '/api/tweets/saved',
+         method: 'POST',
+         data: payload
+     })
+     .then(() => {
+         console.log("Data sent to server!");
+     })
+     .catch(() => {
+         console.log('Server Error');
+     });
     }
 
 
