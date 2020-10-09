@@ -4,20 +4,21 @@ import axios from 'axios';
 class SavedTweets extends Component {
     constructor(props) {
         super(props) 
-        state ={
+        this.statestate ={
             posts: {}
         };
 
-        componentDidMount = () => {
+        this.componentDidMount = () => {
             this.getTweets();
         };
 
-        getTweets = () => {
+        this.getTweets = () => {
             axios.get('/api')
             .then((response) => {
                 const data = response.data;
                 console.log("Data Received!");
                 this.setState({ posts: data })
+                console.log(data);
             })
             .catch(() => {
                 console.log("Error with Database!");

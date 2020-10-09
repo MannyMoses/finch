@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
+import TwitterAPI from '../../utils/TwitterAPI';
+import SavedTweets from '../../components/Saved/SavedTweets';
 
 class Dashboard extends Component {
     onLogoutClick = e => {
@@ -16,6 +18,8 @@ class Dashboard extends Component {
         <div>
             <h3>You are sucessfully logged out.</h3>
             <button onClick={this.onLogoutClick}>Logout</button>
+            <TwitterAPI />
+            <SavedTweets />
         </div>
         );
     }
