@@ -18,22 +18,19 @@ router.get('/', (req, res) => {
     // POST Route
     // Tested With POSTMAN
 router.post('/saved', (req, res) => {
-    const newTweet = new Tweet({
-        // Follow the Schema
-        pic: req.body.pic,
-        name: req.body.name,
-        username: req.body.username,
-        following_count: req.body.following_count,
-        followers_count: req.body.followers_count,
-        tweet_count: req.body.tweet_count,
-        tweet_text: req.body.tweet_text,
-        date: req.body.date,
-        likes_count: req.body.likes_count,
-        retweet_count: req.body.retweet_count,
-        reply_count: req.body.reply_count
-    });
-    newTweet.save()
-    .then(tweet => res.json(tweet));
+    console.log('Body', req.body);
+    const data = req.body;
+    const newTweet = new Tweet(data);
+    
+    newTweet.save((error) => {
+        if (error) {
+            return res.status(500).json({ msg: 'Sorry, internal server error!'})
+        } else {
+            res.json({
+                msg: 'Your data has been saved!'
+            })
+        }
+    })
 });
 
     // DELETE Route
