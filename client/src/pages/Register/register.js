@@ -79,14 +79,14 @@ class Register extends Component {
         return (
             <Container component="main" maxWidth="xs">
                 <CssBaseline/>
-                <Avatar>
+                <Avatar >
                     <LockOutlinedIcon />
                 </Avatar>
             <Typography component="h1" variant="h5">
             Sign Up
             </Typography>
             <form noValidate>
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     <Grid item xs={12} >
                         <TextField
                              onChange={this.onChange}
@@ -161,6 +161,7 @@ class Register extends Component {
                     />
                     </Grid>
                     <Button
+                        onClick={this.onSubmit}
                         type="submit"
                         fullWidth
                         variant="contained"
