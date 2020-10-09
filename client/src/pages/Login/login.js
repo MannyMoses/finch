@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
+import LoginForm from '../../components/Login/form.js';
 
 import classnames from "classnames";
 
@@ -55,30 +56,7 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
-      <form noValidate onSubmit={this.onSubmit}>
-      <label htmlFor="email">Email:</label>
-      <span className="red-text">{errors.email}{errors.emailnotfound}</span>
-      <input 
-        onChange={this.onChange}
-        value={this.state.email}
-        errors={errors.email}
-        id="email"
-        type="email"
-        className={classnames("", {
-          invalid: errors.email || errors.emailnotfound})}/>
-      <label htmlFor="password">Password:</label>
-      <span className="red-text">{errors.password}{errors.passwordincorrect}</span>
-      <input
-        onChange={this.onChange}
-        value={this.state.password}
-        id="password"
-        type="password"
-        className={classnames("", {
-          invalid: errors.password || errors.passwordincorrect })}/>
-      <button type="submit">Submit</button>
-    </form>
-    </div>
+      <LoginForm/>
     );
   }
 }

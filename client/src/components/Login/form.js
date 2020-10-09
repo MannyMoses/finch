@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./components/Layouts/Header";
-import Footer from "./components/Layouts/Footer";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import Header from "./components/Layouts/Header";
+// import Footer from "./components/Layouts/Footer";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 import {
   Typography,
