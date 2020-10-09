@@ -39,15 +39,11 @@ class Card extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        const payload = {
-            tweets: this.props
-        };
-        console.log(payload);
 
      axios({
          url: '/api/tweets/saved',
          method: 'POST',
-         data: payload
+         data: this.props
      })
      .then(() => {
          console.log("Data sent to server!");
