@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import TwitterAPI from '../../utils/TwitterAPI';
-import SavedTweets from '../../components/Saved/SavedTweets';
+import DashboardHome from '../../components/Dashboard/DashboardHome'
 
 
 class Dashboard extends Component {
@@ -19,7 +19,7 @@ class Dashboard extends Component {
         <div>
             <h3>You are sucessfully logged out.</h3>
             <button onClick={this.onLogoutClick}>Logout</button>
-            <SavedTweets />
+            <DashboardHome />
         </div>
         );
     }

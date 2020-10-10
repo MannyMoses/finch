@@ -56,6 +56,4 @@ class SavedTweets extends Component {
 
     
 
-
-
 export default SavedTweets;
