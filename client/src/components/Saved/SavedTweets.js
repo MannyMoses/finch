@@ -1,16 +1,6 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { AccountCircle, LockRounded } from "@material-ui/icons";
-import {
-  Typography,
-  Container,
-  Box,
-  Grid,
-  InputAdornment,
-} from "@material-ui/core";
-import { TextField } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react';
+import axios from 'axios';
+import DeleteButton from '../Saved/DeleteButton';
 
 class SavedTweets extends Component {
   constructor(props) {
@@ -37,27 +27,47 @@ class SavedTweets extends Component {
       });
   };
 
-  render() {
-    return (
-      <div className="savedList">
-        {this.state.posts.map((post) => (
-          <div className="savedTweet">
-            <img className="pic" src={post.pic} alt=""></img>
-            <h2 className="name">{post.name}</h2>
-            <h6 className="userName">@{post.username}</h6>
-            <p className="following">{post.following} Following</p>
-            <p className="followers">{post.followers} Followers</p>
-            <p className="userTweet">{post.userTweet} Tweets</p>
-            <p className="tweet">{post.tweet}</p>
-            <p className="date">{post.date}</p>
-            <p className="likes">{post.likes} Likes</p>
-            <p className="retweets">{post.retweets} Retweets</p>
-            <p className="replies">{post.replies} Replies</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
+        handleDelete = (event) => {
+            event.preventDefault();
+            axios({
+                url: '/api/tweets/:id',
+                method: "delete",
+                data: this.state.posts
+            })
+            .then(() => {
+                console.log("Data Deleted!");
+            })
+            .catch(() => {
+                console.log("Server Error!");
+            });
+        }
+
+    
+
+    render() {
+        return (
+            <div className="savedList">
+                {this.state.posts.map((post) => (
+                    <div className="savedTweet">
+                        <img className="pic" src={post.pic} alt=""></img>
+                        <h2 className="name">{post.name}</h2>
+                        <h6 className="userName">@{post.username}</h6>
+                        <p className="following">{post.following} Following</p>
+                        <p className="followers">{post.followers} Followers</p>
+                        <p className="userTweet">{post.userTweet} Tweets</p>
+                        <p className="tweet">{post.tweet}</p>
+                        <p className="date">{post.date}</p>
+                        <p className="likes">{post.likes} Likes</p>
+                        <p className="retweets">{post.retweets} Retweets</p>
+                        <p className="replies">{post.replies} Replies</p>
+                        <DeleteButton handleDelete={this.handleDelete} />
+                    </div>
+
+                    
+                ))}
+            </div>
+        )
+    }
 }
 
 export default SavedTweets;
