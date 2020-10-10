@@ -22,8 +22,7 @@ class Dashboard extends Component {
       <div>
         <h3>You are sucessfully logged out.</h3>
         <button onClick={this.onLogoutClick}>Logout</button>
-        <SavedTweets />
-        <DashboardHome />
+          <DashboardHome />
       </div>
     );
   }
