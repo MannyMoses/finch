@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
-import TwitterAPI from '../../utils/TwitterAPI'
+import React, { Component } from "react";
+import TwitterAPI from "../../utils/TwitterAPI";
+import PersistentDrawerLeft from "./Drawer/Drawer";
 
-class Dashboard extends Component {
-    render() {
-        return (
-            <div className="dashboardDiv">
-                <TwitterAPI />
-            </div>
-        )
-    }
+class DashboardHome extends Component {
+  render() {
+    return (
+      <PersistentDrawerLeft>
+        <div className="dashboardDiv">
+          <TwitterAPI />
+        </div>
+      </PersistentDrawerLeft>
+    );
+  }
 }
 
-export default Dashboard;
+export default DashboardHome;
