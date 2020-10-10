@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -17,6 +18,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import MenuItem from '@material-ui/core/MenuItem';
+import HomeIcon from '@material-ui/icons/Home';
+import MenuList from '@material-ui/core/MenuList';
+import SaveIcon from '@material-ui/icons/Save';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 240;
 
@@ -90,6 +96,8 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -133,16 +141,19 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {["Home", "Saved", "Profile", "LogOut"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+          <MenuList>
+            <MenuItem component={Link} to="/dashboard">  <HomeIcon/> 
+              Home
+            </MenuItem>
+            <MenuItem component={Link} to="/saved">
+            <SaveIcon/>
+            Saved 
+            </MenuItem>
+            <MenuItem component={Link} to="/">
+              <ExitToAppIcon/>
+              Logout
+            </MenuItem>
+          </MenuList>
         <Divider />
       </Drawer>
       <main
@@ -151,8 +162,6 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>Placeholder</Typography>
-        <Typography paragraph>Placeholder</Typography>
       </main>
     </div>
   );

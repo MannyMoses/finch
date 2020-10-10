@@ -47,7 +47,7 @@ class Login extends Component {
 
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
@@ -68,97 +68,103 @@ class Login extends Component {
   };
 
   register = () => {
-    this.props.history.push('/register');
+    this.props.history.push("/register");
   };
 
   render() {
     const { errors } = this.state;
 
-
     return (
       <Grid container style={{ minHeight: "100vh" }}>
-      <Grid item xs={12} sm={6}>
-        <img
-          src="https://bityl.co/3rdm"
-          style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          alt="twitterpic"
-        />
-      </Grid>
-      <Grid
-        container
-        item
-        xs={12}
-        sm={6}
-        alignItems="center"
-        direction="column"
-        justify="space-between"
-        style={{ padding: 10 }}
-      >
-        <div />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: 300,
-            minWidth: 200,
-          }}
+        <Grid item xs={12} sm={6}>
+          <img
+            src="https://bityl.co/3rdm"
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+            alt="twitterpic"
+          />
+        </Grid>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={6}
+          alignItems="center"
+          direction="column"
+          justify="space-between"
+          style={{ padding: 10 }}
         >
-          <Grid container justify="center">
-            <img
-              src="https://cdn.dribbble.com/users/180062/screenshots/5623548/finch.png"
-              width={400}
-              alt="logo"
+          <div />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: 300,
+              minWidth: 200,
+            }}
+          >
+            <Grid container justify="center">
+              <img
+                src="https://cdn.dribbble.com/users/180062/screenshots/5623548/finch.png"
+                width={400}
+                alt="logo"
+              />
+            </Grid>
+            <TextField
+              onChange={this.onChange}
+              value={this.state.email}
+              errors={errors.email}
+              id="email"
+              type="email"
+              className={classnames("", {
+                invalid: errors.email || errors.emailnotfound,
+              })}
+              label="Email Address"
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment>
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
             />
-          </Grid>
-          <TextField
-            onChange={this.onChange}
-            value={this.state.email}
-            errors={errors.email}
-            id="email"
-            type="email"
-            className={classnames("", {
-              invalid: errors.email || errors.emailnotfound})}
-            label="Email Address"
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment>
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            onChange={this.onChange}
-            value={this.state.password}
-            id="password"
-            type="password"
-            className={classnames("", {
-              invalid: errors.password || errors.passwordincorrect })}
-            label="Password"
-            margin="normal"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment>
-                  <LockRounded />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <div style={{ height: 20 }} />
-          <Button color="primary" variant="contained" type="submit" onClick={this.onSubmit} >
-            Log in
-          </Button>
-          <div style={{ height: 20 }} />
-          <Grid item>
-                <Link onClick={this.register} variant="body">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-          </Grid>
-        </div>
-        <div />
+            <TextField
+              onChange={this.onChange}
+              value={this.state.password}
+              id="password"
+              type="password"
+              className={classnames("", {
+                invalid: errors.password || errors.passwordincorrect,
+              })}
+              label="Password"
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment>
+                    <LockRounded />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <div style={{ height: 20 }} />
+            <Button
+              color="primary"
+              variant="contained"
+              type="submit"
+              onClick={this.onSubmit}
+            >
+              Log in
+            </Button>
+            <div style={{ height: 20 }} />
+            <Grid item>
+              <Link onClick={this.register} variant="body">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </div>
+          <div />
+        </Grid>
       </Grid>
-    </Grid>
     );
   }
 }
