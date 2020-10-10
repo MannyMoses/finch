@@ -1,7 +1,4 @@
 import React from "react";
-// import Header from "./components/Layouts/Header";
-// import Footer from "./components/Layouts/Footer";
-// import CssBaseline from "@material-ui/core/CssBaseline";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 import {
   Typography,
@@ -62,7 +59,8 @@ export default function SimpleContainer() {
             id="email"
             type="email"
             className={classnames("", {
-              invalid: errors.email || errors.emailnotfound})}
+              invalid: errors.email || errors.emailnotfound,
+            })}
             label="Email Address"
             margin="normal"
             InputProps={{
@@ -79,7 +77,8 @@ export default function SimpleContainer() {
             id="password"
             type="password"
             className={classnames("", {
-              invalid: errors.password || errors.passwordincorrect })}
+              invalid: errors.password || errors.passwordincorrect,
+            })}
             label="Password"
             margin="normal"
             InputProps={{
