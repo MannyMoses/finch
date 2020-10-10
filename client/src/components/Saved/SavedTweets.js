@@ -34,23 +34,6 @@ class SavedTweets extends Component {
     };
 
 
-        handleDelete = (event) => {
-            event.preventDefault();
-            axios({
-                url: '/api/tweets/:id',
-                method: "delete",
-                data: this.state.posts
-            })
-            .then(() => {
-                console.log("Data Deleted!");
-            })
-            .catch((err) => {
-                console.log("Server Error!");
-                console.log(err);
-            });
-        }
-
-
   getTweets = () => {
     axios
       .get("/api/tweets")
