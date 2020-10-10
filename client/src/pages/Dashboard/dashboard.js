@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -6,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import TwitterAPI from "../../utils/TwitterAPI";
 import SavedTweets from "../../components/Saved/SavedTweets";
 import DashboardHome from "../../components/Dashboard/DashboardHome";
-
+import Button from '@material-ui/core/Button';
 
 class Dashboard extends Component {
   onLogoutClick = (e) => {
@@ -18,12 +17,13 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-
       <div>
-        <h3>You are sucessfully logged out.</h3>
-        <button onClick={this.onLogoutClick}>Logout</button>
-        <SavedTweets />
-        <DashboardHome />
+        
+            
+            
+            <DashboardHome>
+                <Button onClick={this.onLogoutClick}>Logout</Button>
+            </DashboardHome> 
       </div>
     );
   }

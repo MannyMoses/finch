@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import TwitterAPI from "../../utils/TwitterAPI";
 import PersistentDrawerLeft from "./Drawer/Drawer";
+import SearchBar from "./SearchBar";
 
 class DashboardHome extends Component {
   render() {
     return (
-      <PersistentDrawerLeft>
+        
+      <SearchBar>
         <div className="dashboardDiv">
           <TwitterAPI />
         </div>
-      </PersistentDrawerLeft>
+      </SearchBar>
     );
   }
 }
