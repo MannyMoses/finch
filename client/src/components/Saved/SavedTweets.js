@@ -50,6 +50,7 @@ class SavedTweets extends Component {
 
   handleDelete = (event) => {
     event.preventDefault();
+    console.log(event.target.getAttribute("data-id"));
     axios({
       url: "/api/tweets/:id",
       method: "delete",
@@ -80,7 +81,7 @@ class SavedTweets extends Component {
             <p className="likes">{post.likes} Likes</p>
             <p className="retweets">{post.retweets} Retweets</p>
             <p className="replies">{post.replies} Replies</p>
-            <DeleteButton handleDelete={this.handleDelete} />
+            <DeleteButton handleDelete={this.handleDelete} data-id={post._id} />
           </div>
         ))}
       </div>
