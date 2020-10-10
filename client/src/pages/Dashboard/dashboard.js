@@ -18,12 +18,18 @@ class Dashboard extends Component {
 
     return (
       <div>
+<<<<<<< HEAD
         
             
             
             <DashboardHome>
                 <Button onClick={this.onLogoutClick}>Logout</Button>
             </DashboardHome> 
+=======
+        <h3>You are sucessfully logged out.</h3>
+        <button onClick={this.onLogoutClick}>Logout</button>
+          <DashboardHome />
+>>>>>>> d29715776e08729a6970e9234dc5864844cc0000
       </div>
     );
   }

@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import store from "./store";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import login from "./pages/Login/login";
+import saved from '../src/pages/saved';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -41,6 +42,7 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/saved" component={saved}/>
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
