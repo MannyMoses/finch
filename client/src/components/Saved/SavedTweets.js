@@ -37,8 +37,9 @@ class SavedTweets extends Component {
             .then(() => {
                 console.log("Data Deleted!");
             })
-            .catch(() => {
+            .catch((err) => {
                 console.log("Server Error!");
+                console.log(err);
             });
         }
 

@@ -36,9 +36,11 @@ router.post('/saved', (req, res) => {
     // DELETE Route
     // NEED TO TEST WITH POSTMAN
 router.delete('/:id', (req, res) => {
+    console.log(req.params);
     Tweet.findById(req.params.id).then(tweet => tweet.remove()
     .then(() => res.json({success: true })))
-    .catch(err => res.status(404).json({success: false}))
+    .catch(err => console.log(err));
+    
 });
 
 module.exports = router;
