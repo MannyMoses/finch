@@ -39,11 +39,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-<<<<<<< HEAD
-          <Route exact path="/" component={login} />
-=======
           <Route exact path="/" component={Login} />
->>>>>>> 15c2272c924c97a53acb2e73d9925f69c9f05165
           <Route exact path="/register" component={Register} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
