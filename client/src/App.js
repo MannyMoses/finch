@@ -38,7 +38,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
