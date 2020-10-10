@@ -2,21 +2,35 @@ import React, { Component } from "react";
 import axios from "axios";
 import DeleteButton from "../Saved/DeleteButton";
 
-handleDelete = (event) => {
-  event.preventDefault();
-  axios({
-    url: "/api/tweets/:id",
-    method: "delete",
-    data: this.state.posts,
-  })
-    .then(() => {
-      console.log("Data Deleted!");
-    })
-    .catch((err) => {
-      console.log("Server Error!");
-      console.log(err);
-    });
-};
+class SavedTweets extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts: [],
+        };
+    }
+
+    componentDidMount = () => {
+        this.getTweets();
+    };
+
+
+        handleDelete = (event) => {
+            event.preventDefault();
+            axios({
+                url: '/api/tweets/:id',
+                method: "delete",
+                data: this.state.posts
+            })
+            .then(() => {
+                console.log("Data Deleted!");
+            })
+            .catch((err) => {
+                console.log("Server Error!");
+                console.log(err);
+            });
+        }
+
 
 getTweets = () => {
   axios
@@ -42,10 +56,21 @@ handleDelete = (event) => {
     .then(() => {
       console.log("Data Deleted!");
     })
+<<<<<<< HEAD
     .catch(() => {
       console.log("Server Error!");
     });
 };
+=======
+      .then(() => {
+        console.log("Data Deleted!");
+      })
+      .catch((err) => {
+        console.log("Server Error!");
+        console.log(err);
+      });
+  };
+>>>>>>> f5663a4fdd95a10c972af985eb959af1ee29986c
 
 render();
 {
