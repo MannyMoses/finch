@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -18,11 +18,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import MenuItem from '@material-ui/core/MenuItem';
-import HomeIcon from '@material-ui/icons/Home';
-import MenuList from '@material-ui/core/MenuList';
-import SaveIcon from '@material-ui/icons/Save';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MenuItem from "@material-ui/core/MenuItem";
+import HomeIcon from "@material-ui/icons/Home";
+import MenuList from "@material-ui/core/MenuList";
+import SaveIcon from "@material-ui/icons/Save";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const drawerWidth = 240;
 
@@ -96,8 +96,6 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -117,7 +115,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h4" noWrap>
             Dashboard
           </Typography>
         </Toolbar>
@@ -141,19 +139,21 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-          <MenuList>
-            <MenuItem component={Link} to="/dashboard">  <HomeIcon/> 
-              Home
-            </MenuItem>
-            <MenuItem component={Link} to="/saved">
-            <SaveIcon/>
-            Saved 
-            </MenuItem>
-            <MenuItem component={Link} to="/">
-              <ExitToAppIcon/>
-              Logout
-            </MenuItem>
-          </MenuList>
+        <MenuList>
+          <MenuItem component={Link} to="/dashboard">
+            {" "}
+            <HomeIcon />
+            Home
+          </MenuItem>
+          <MenuItem component={Link} to="/saved">
+            <SaveIcon />
+            Saved
+          </MenuItem>
+          <MenuItem component={Link} to="/">
+            <ExitToAppIcon />
+            Logout
+          </MenuItem>
+        </MenuList>
         <Divider />
       </Drawer>
       <main
