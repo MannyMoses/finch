@@ -21,6 +21,18 @@ import DeleteButton from "../Saved/DeleteButton";
 // import InboxIcon from "@material-ui/icons/MoveToInbox";
 // import MailIcon from "@material-ui/icons/Mail";
 
+class SavedTweets extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts: [],
+        };
+    }
+
+    componentDidMount = () => {
+        this.getTweets();
+    };
+
 
         handleDelete = (event) => {
             event.preventDefault();
