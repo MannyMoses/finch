@@ -1,4 +1,5 @@
 import React from "react";
+import SavedTweets from '../components/Saved/SavedTweets';
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -166,7 +167,7 @@ export default function PersistentDrawerLeft() {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Saved Tweets
+                    <SavedTweets />
                 </Typography>
               </CardContent>
             </CardActionArea>
