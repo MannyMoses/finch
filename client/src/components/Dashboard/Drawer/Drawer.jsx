@@ -151,8 +151,6 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>Placeholder</Typography>
-        <Typography paragraph>Placeholder</Typography>
       </main>
     </div>
   );
