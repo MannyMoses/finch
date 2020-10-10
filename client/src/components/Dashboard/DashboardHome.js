@@ -7,11 +7,10 @@ class DashboardHome extends Component {
   render() {
     return (
         
-      <SearchBar>
         <div className="dashboardDiv">
           <TwitterAPI />
         </div>
-      </SearchBar>
+      
     );
   }
 }
