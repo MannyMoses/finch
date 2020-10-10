@@ -22,16 +22,23 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 
-class SavedTweets extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-    };
-  }
-  componentDidMount = () => {
-    this.getTweets();
-  };
+
+        handleDelete = (event) => {
+            event.preventDefault();
+            axios({
+                url: '/api/tweets/:id',
+                method: "delete",
+                data: this.state.posts
+            })
+            .then(() => {
+                console.log("Data Deleted!");
+            })
+            .catch((err) => {
+                console.log("Server Error!");
+                console.log(err);
+            });
+        }
+
 
   getTweets = () => {
     axios
