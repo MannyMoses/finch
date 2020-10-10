@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DeleteButton from '../Saved/DeleteButton';
 
 class SavedTweets extends Component {
     constructor(props) {
@@ -26,6 +27,21 @@ class SavedTweets extends Component {
             })
         }
 
+        handleDelete = (event) => {
+            event.preventDefault();
+            axios({
+                url: '/api/tweets/:id',
+                method: "delete",
+                data: this.state.posts
+            })
+            .then(() => {
+                console.log("Data Deleted!");
+            })
+            .catch(() => {
+                console.log("Server Error!");
+            });
+        }
+
     
 
     render() {
@@ -44,9 +60,9 @@ class SavedTweets extends Component {
                         <p className="likes">{post.likes} Likes</p>
                         <p className="retweets">{post.retweets} Retweets</p>
                         <p className="replies">{post.replies} Replies</p>
+                        <DeleteButton handleDelete={this.handleDelete} />
                     </div>
 
-                    
                     
                 ))}
             </div>
